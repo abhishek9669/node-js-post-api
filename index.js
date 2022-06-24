@@ -13,8 +13,20 @@ app.post('/postdata', async (req, res) => {
     let result =await data.insertOne(req.body);
 
     
-    // console.log(data);
+    //console.log(data);
      res.send(result)
+});
+app.put('/', async (req, res) => {
+
+    let resultr = await conectmongo();
+     resultr.updateOne(
+        {name:"testdata3"},
+        { $set:{addres:"614264444445"}}
+
+    )
+    console.log("hekkervkebvka kf");
+
+
 })
 
 app.listen(4000);
