@@ -1,4 +1,5 @@
 const conectmongo = require('./conectmongodb');
+let mangodb = require("mongodb");
 
 
 const express = require('express');
@@ -21,5 +22,14 @@ app.put('/:name', async (req, res) => {
 
 
 })
+app.delete("/:id",async(req, res)=>{
+    let result = await conectmongo();
+    result.deleteOne(
+        {_id: new mangodb.ObjectId(req.params.id)}
+    );
+    res.send("done")    
+
+
+});
 
 app.listen(4000);
